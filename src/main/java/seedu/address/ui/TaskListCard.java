@@ -35,8 +35,10 @@ public class TaskListCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         description.setText(task.getDescription());
         patient.setText(task.getPatient().getName().fullName);
-        status.textProperty().bind(task.isCompleteProperty().asString().map(
-                isComplete -> task.getStatusString()
-        ));
+        status.setText(task.getStatusString());
+
+        task.isCompleteProperty().addListener((observable, oldValue, newValue) -> {
+            status.setText(task.getStatusString());
+        });
     }
 }
