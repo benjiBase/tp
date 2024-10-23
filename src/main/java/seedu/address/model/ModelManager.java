@@ -5,12 +5,15 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
@@ -27,6 +30,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Task> filteredTasks;
+    private final SortedList<Person> sortedPriority;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -40,6 +44,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
+        sortedPriority = new SortedList<>(filteredPersons);
     }
 
     public ModelManager() {
@@ -153,6 +158,19 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    @Override
+    public void sortPersonByPriority() {
+        Comparator<Person> priorityComparator = Comparator.comparing(person -> person.getPriorityLevel().getValue());
+        sortedPriority.setComparator(priorityComparator);
+        filteredPersons.setPredicate(person -> true);
+
+        // Log the sorted persons
+        logger.log(Level.INFO, "Sorted Persons by Priority: ");
+        for (Person person : sortedPriority) {
+            logger.log(Level.INFO, person.toString()); // Ensure to override toString in Person class
+        }
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -161,7 +179,7 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
+        return sortedPriority;
     }
 
 
@@ -170,6 +188,7 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
     }
+
 
     //=========== Filtered Task List Accessors =============================================================
 

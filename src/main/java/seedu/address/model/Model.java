@@ -124,4 +124,9 @@ public interface Model {
      * @param target The person whose priority level is to be reset.
      */
     void resetPersonPriority(Person target);
+
+    /**
+     * Sorts the filtered person list by priority.
+     */
+    void sortPersonByPriority();
 }
