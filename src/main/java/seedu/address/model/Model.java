@@ -107,6 +107,9 @@ public interface Model {
     /** Returns an unmodifiable view of the task list */
     ObservableList<Task> getFilteredTaskList();
 
+    /** Returns an unmodifiable view of the sorted person list */
+    ObservableList<Person> getSortByPriorityList();
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.

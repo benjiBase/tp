@@ -15,6 +15,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PriorityLevel;
+import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.task.Task;
 
 /**
@@ -27,6 +28,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Task> filteredTasks;
+    private final FilteredList<Person> sortByPriorityList;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -40,6 +42,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
+        sortByPriorityList = new FilteredList<>(this.addressBook.getSortByPriorityList());
     }
 
     public ModelManager() {
@@ -164,11 +167,21 @@ public class ModelManager implements Model {
         return filteredPersons;
     }
 
+    @Override
+    public ObservableList<Person> getSortByPriorityList() {
+        return sortByPriorityList;
+    }
 
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void sortPatientsByPriority(Predicate<Person> predicate) {
+        addressBook.sortPersonsByPriority();
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     //=========== Filtered Task List Accessors =============================================================

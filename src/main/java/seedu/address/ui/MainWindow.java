@@ -169,6 +169,15 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    /**
+     * Executes the command and returns the result.
+     */
+    private void updatePersonListPanel() {
+        personListPanel = new PersonListPanel(logic.getSortByPriorityList());
+        personListPanelPlaceholder.getChildren().clear(); // Clear existing children
+        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot()); // Add the new panel
+    }
+
     public PersonListPanel getPersonListPanel() {
         return personListPanel;
     }
@@ -183,6 +192,8 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            updatePersonListPanel();
 
             if (commandResult.isShowHelp()) {
                 handleHelp();

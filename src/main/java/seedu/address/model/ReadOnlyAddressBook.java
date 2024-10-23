@@ -15,5 +15,5 @@ public interface ReadOnlyAddressBook {
      */
     ObservableList<Person> getPersonList();
     ObservableList<Task> getTaskList();
-
+    ObservableList<Person> getSortByPriorityList();
 }
