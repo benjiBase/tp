@@ -7,6 +7,8 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalPersons.FIONA;
+import static seedu.address.testutil.TypicalPersons.GEORGE;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -203,5 +205,22 @@ public class ModelManagerTest {
 
         // Verify the priority level remains 3 after multiple resets
         assertEquals(3, ALICE.getPriorityLevel().getValue());
+    }
+
+    @Test
+    public void sortPatientsByPriority_validPredicate_personsSortedByPriority() {
+        AddressBook addressBook = new AddressBookBuilder().withPerson(FIONA).withPerson(GEORGE).build();
+        ModelManager modelManager = new ModelManager(addressBook, new UserPrefs());
+
+        // Ensure the initial order of persons is not sorted by priority
+        assertEquals(FIONA, modelManager.getFilteredPersonList().get(0));
+        assertEquals(GEORGE, modelManager.getFilteredPersonList().get(1));
+
+        // Sort the persons by priority
+        modelManager.sortPatientsByPriority(PREDICATE_SHOW_ALL_PERSONS);
+
+        // Ensure the persons are sorted by priority
+        assertEquals(GEORGE, modelManager.getFilteredPersonList().get(0));
+        assertEquals(FIONA, modelManager.getFilteredPersonList().get(1));
     }
 }

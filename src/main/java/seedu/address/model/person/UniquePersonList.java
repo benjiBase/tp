@@ -112,13 +112,6 @@ public class UniquePersonList implements Iterable<Person> {
         return internalUnmodifiableList;
     }
 
-//    /**
-//     * Returns the priority list as an unmodifiable {@code ObservableList}.
-//     */
-//    public ObservableList<Person> asUnmodifiablePriorityList() {
-//        return internalUnmodifiablePriorityList;
-//    }
-
     @Override
     public Iterator<Person> iterator() {
         return internalList.iterator();

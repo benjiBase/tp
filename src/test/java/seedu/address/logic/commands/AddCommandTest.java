@@ -208,6 +208,11 @@ public class AddCommandTest {
             priorityWasReset = true;
         }
 
+        @Override
+        public void sortPatientsByPriority(Predicate<Person> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
         public boolean wasPriorityReset() {
             return priorityWasReset;
         }

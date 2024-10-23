@@ -49,13 +49,13 @@ public class TypicalPersons {
             .build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
             .withEmail("werner@example.com").withAddress("michegan ave")
-            .withEmergencyContact("", "99999999").withPriorityLevel(3)
+            .withEmergencyContact("", "99999999").withPriorityLevel(1)
             .build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
             .withEmail("lydia@example.com").withAddress("little tokyo").withPriorityLevel(3)
             .build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
-            .withEmail("anna@example.com").withAddress("4th street").withPriorityLevel(3)
+            .withEmail("anna@example.com").withAddress("4th street").withPriorityLevel(2)
             .build();
 
     // Manually added

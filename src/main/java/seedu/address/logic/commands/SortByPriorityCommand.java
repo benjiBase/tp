@@ -10,14 +10,14 @@ import seedu.address.model.Model;
  */
 public class SortByPriorityCommand extends Command {
 
-        public static final String COMMAND_WORD = "sortbypriority";
+    public static final String COMMAND_WORD = "sortbypriority";
 
-        public static final String MESSAGE_SUCCESS = "Sorted all tasks by priority level";
+    public static final String MESSAGE_SUCCESS = "Sorted all tasks by priority level";
 
-        @Override
-        public CommandResult execute(Model model) {
-            requireNonNull(model);
-            model.sortPatientsByPriority(PREDICATE_SHOW_ALL_PERSONS);
-            return new CommandResult(MESSAGE_SUCCESS);
-        }
+    @Override
+    public CommandResult execute(Model model) {
+        requireNonNull(model);
+        model.sortPatientsByPriority(PREDICATE_SHOW_ALL_PERSONS);
+        return new CommandResult(MESSAGE_SUCCESS);
+    }
 }
