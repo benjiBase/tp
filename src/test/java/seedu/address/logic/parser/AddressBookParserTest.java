@@ -21,6 +21,7 @@ import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteEmergencyContactCommand;
+import seedu.address.logic.commands.DeletePriorityCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.EmergencyContactCommand;
@@ -33,6 +34,7 @@ import seedu.address.logic.commands.ListIncompleteCommand;
 import seedu.address.logic.commands.ListTaskCommand;
 import seedu.address.logic.commands.MarkTaskCommand;
 import seedu.address.logic.commands.PriorityCommand;
+import seedu.address.logic.commands.SortByPriorityCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.EmergencyContact;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
@@ -194,4 +196,16 @@ public class AddressBookParserTest {
 
     }
 
+    @Test
+    public void parseCommand_SortByPriority() throws Exception {
+        assertTrue(parser.parseCommand(SortByPriorityCommand.COMMAND_WORD) instanceof SortByPriorityCommand);
+        assertTrue(parser.parseCommand(SortByPriorityCommand.COMMAND_WORD + " 1")
+                instanceof SortByPriorityCommand);
+    }
+
+    @Test
+    public void parseCommand_deletePriority() throws Exception {
+        DeletePriorityCommand command = (DeletePriorityCommand) parser.parseCommand("deletelevel 2");
+        assertEquals(new DeletePriorityCommand(2), command);
+    }
 }
