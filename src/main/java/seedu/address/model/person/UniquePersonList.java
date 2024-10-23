@@ -100,8 +100,6 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-<<<<<<< Updated upstream
-=======
      * Sorts the list by priority level 1 to 3 (most to least important).
      */
     public ObservableList<Person> sortByPriority() {
@@ -110,10 +108,6 @@ public class UniquePersonList implements Iterable<Person> {
         return FXCollections.observableArrayList(sortedList);
     }
 
-    /**
->>>>>>> Stashed changes
-     * Returns the backing list as an unmodifiable {@code ObservableList}.
-     */
     public ObservableList<Person> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }

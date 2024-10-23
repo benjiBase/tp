@@ -144,6 +144,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
+    /**
+     *
+     */
+    public void sortPersonsByPriority() {
+        persons.sortByPriority();
+    }
     //// util methods
 
     @Override

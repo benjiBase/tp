@@ -27,6 +27,7 @@ import seedu.address.logic.commands.ListIncompleteCommand;
 import seedu.address.logic.commands.ListTaskCommand;
 import seedu.address.logic.commands.MarkTaskCommand;
 import seedu.address.logic.commands.PriorityCommand;
+import seedu.address.logic.commands.SortByPriorityCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -113,6 +114,9 @@ public class AddressBookParser {
 
         case DeletePriorityCommand.COMMAND_WORD:
             return new DeletePriorityCommandParser().parse(arguments);
+
+        case SortByPriorityCommand.COMMAND_WORD:
+            return new SortByPriorityCommand();
 
         case FindTaskCommand.COMMAND_WORD:
             return new FindTaskCommandParser().parse(arguments);

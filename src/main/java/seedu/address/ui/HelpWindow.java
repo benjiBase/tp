@@ -7,7 +7,6 @@ import java.net.URISyntaxException;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.input.Clipboard;
@@ -22,12 +21,9 @@ public class HelpWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL = "https://ay2425s1-cs2103t-f15-1.github.io/tp/UserGuide.html";
     public static final String HELP_MESSAGE = "Refer to the user guide:";
-    private static final String HELP_COMMAND = getAllCommands();
+    private static final String HELP_COMMAND = getPatientCommands() + getTaskCommands() + otherCommands();
     private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
     private static final String FXML = "HelpWindow.fxml";
-
-    @FXML
-    private Button copyButton;
 
     @FXML
     private Label helpMessage;
@@ -115,21 +111,53 @@ public class HelpWindow extends UiPart<Stage> {
     }
 
     /**
-     * Returns the list of all commands.
+     * Returns the list of patient commands.
      */
-    public static String getAllCommands() {
-        return "Here are the list of commands available:\n"
-                + "1. add\n"
-                + "2. delete\n"
-                + "3. addtask\n"
-                + "4. deletetask\n"
-                + "5. emergency\n"
-                + "6. priority\n"
-                + "7. list\n"
-                + "8. help\n"
-                + "9. exit\n"
-                + "10. find\n"
-                + "11. clear\n";
+    public static String getPatientCommands() {
+        return """
+                For more information on the commands, please refer to the user guide.
+                Alternatively, you can the type commands to view more details and example.
+
+                Here are the list of Patient Commands available:
+                1. add (add patient)
+                2. delete (delete patient)
+                3. emergency (set emergency contact)\s
+                4. delemergency (delete emergency contact)
+                5. priority (set or edit priority level)
+                6. deletelevel (delete priority level)
+                7. find (find a person)
+                8. list (list all persons)
+                9. clear (clear all persons)
+                10. sortbypriority (sort Patients by priority level 1 to 3)
+                """;
+    }
+
+    /**
+     * Returns the list of task commands.
+     */
+    public static String getTaskCommands() {
+        return """
+
+                 Here are the list of Patient Commands available:
+                1. addtask (add a task)
+                2. deletetask (delete task)
+                3. findtask (find a task)
+                4. listtask (list all tasks)
+                5. listincomplete (list incomplete tasks)
+                6. marktask (mark a task as complete)
+                """;
+    }
+
+    /**
+     * Returns the list of other commands.
+     */
+    public static String otherCommands() {
+        return """
+
+                 Here are the list of Other Commands available:
+                1. help (show help page)
+                2. exit (exit the application)
+                """;
     }
 
     /**
