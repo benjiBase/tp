@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -163,12 +162,6 @@ public class ModelManager implements Model {
         Comparator<Person> priorityComparator = Comparator.comparing(person -> person.getPriorityLevel().getValue());
         sortedPriority.setComparator(priorityComparator);
         filteredPersons.setPredicate(person -> true);
-
-        // Log the sorted persons
-        logger.log(Level.INFO, "Sorted Persons by Priority: ");
-        for (Person person : sortedPriority) {
-            logger.log(Level.INFO, person.toString()); // Ensure to override toString in Person class
-        }
     }
 
     //=========== Filtered Person List Accessors =============================================================

@@ -126,7 +126,7 @@ public interface Model {
     void resetPersonPriority(Person target);
 
     /**
-     * Sorts the filtered person list by priority.
+     * Sorts the filtered person list by priority level from 1 to 3.
      */
     void sortPersonByPriority();
 }

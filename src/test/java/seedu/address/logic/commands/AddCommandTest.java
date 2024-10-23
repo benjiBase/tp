@@ -211,6 +211,11 @@ public class AddCommandTest {
         public boolean wasPriorityReset() {
             return priorityWasReset;
         }
+
+        @Override
+        public void sortPersonByPriority() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

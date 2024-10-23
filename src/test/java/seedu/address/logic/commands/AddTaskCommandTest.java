@@ -263,6 +263,11 @@ public class AddTaskCommandTest {
         public void resetPersonPriority(Person target) {
             // No operation needed for this stub; this line is necessary to satisfy the interface.
         }
+
+        @Override
+        public void sortPersonByPriority() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
