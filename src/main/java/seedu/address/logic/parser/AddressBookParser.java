@@ -24,6 +24,7 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.MarkTaskCommand;
 import seedu.address.logic.commands.PriorityCommand;
+import seedu.address.logic.commands.SortByPriorityCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -104,6 +105,9 @@ public class AddressBookParser {
 
         case DeletePriorityCommand.COMMAND_WORD:
             return new DeletePriorityCommandParser().parse(arguments);
+
+        case SortByPriorityCommand.COMMAND_WORD:
+            return new SortByPriorityCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

@@ -3,6 +3,7 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -98,11 +99,25 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Sorts the list by priority level 1 to 3 (most to least important).
+     */
+    public void sortByPriority() {
+        FXCollections.sort(internalList, Comparator.comparingInt(person -> person.getPriorityLevel().getValue()));
+    }
+
+    /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<Person> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }
+
+//    /**
+//     * Returns the priority list as an unmodifiable {@code ObservableList}.
+//     */
+//    public ObservableList<Person> asUnmodifiablePriorityList() {
+//        return internalUnmodifiablePriorityList;
+//    }
 
     @Override
     public Iterator<Person> iterator() {

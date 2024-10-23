@@ -124,4 +124,9 @@ public interface Model {
      * @param target The person whose priority level is to be reset.
      */
     void resetPersonPriority(Person target);
+
+    /**
+     * Sort patients by priority level from level 1 to 3. (Most to least important)
+     */
+    void sortPatientsByPriority(Predicate<Person> predicate);
 }
