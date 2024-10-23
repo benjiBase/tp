@@ -197,7 +197,7 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_SortByPriority() throws Exception {
+    public void parseCommand_sortByPriority() throws Exception {
         assertTrue(parser.parseCommand(SortByPriorityCommand.COMMAND_WORD) instanceof SortByPriorityCommand);
         assertTrue(parser.parseCommand(SortByPriorityCommand.COMMAND_WORD + " 1")
                 instanceof SortByPriorityCommand);
