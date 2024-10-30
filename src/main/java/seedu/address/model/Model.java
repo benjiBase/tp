@@ -129,4 +129,17 @@ public interface Model {
      * Sorts the filtered person list by priority level from 1 to 3.
      */
     void sortPersonByPriority();
+
+    /**
+     * Updates the tasks associated with the given person.
+     * @param oldPerson The person whose tasks are to be updated.
+     * @param newPerson The person with the updated tasks.
+     */
+    void updateTasksForPerson(Person oldPerson, Person newPerson);
+
+    /**
+     * Replaces the given task {@code target} with {@code editedTask}.
+     * {@code target} must exist in the address book.
+     */
+    void setTask(Task target, Task editedTask);
 }

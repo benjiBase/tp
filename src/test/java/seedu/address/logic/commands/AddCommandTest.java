@@ -216,6 +216,16 @@ public class AddCommandTest {
         public void sortPersonByPriority() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void setTask(Task target, Task editedTask) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateTasksForPerson(Person target, Person editedPerson) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
