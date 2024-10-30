@@ -129,7 +129,7 @@ public class HelpWindow extends UiPart<Stage> {
                 7. find (find a person)
                 8. list (list all persons)
                 9. clear (clear all persons)
-                10. sortbypriority (sort Patients by priority level 1 to 3)
+                10. sortpriority (sort Patients by priority level 1 to 3)
                 """;
     }
 
